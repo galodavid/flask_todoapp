@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Routine master</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Routine</h1>
+    <h2>Update exercise</h2>
+    <div class="form">
+    <form action="/update/{{ exercise.id }}" method="POST">
+        <input type="text" name="content" id="content" value="{{ exercise.content }}">
+        <input type="submit" value="Update">
+    </form>
+    </div>
+
+</div>
+
+{% endblock %}

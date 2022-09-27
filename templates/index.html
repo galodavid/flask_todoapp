@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Routine master</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Routine</h1>
+    {% if exercises|length < 1 %}
+    <h3>There are currently no exercises added. Add one to show routine</h3>
+    {% else %}
+    <table>
+        <tr>
+            <th>Excercise</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for exercise in exercises %}
+        <tr>
+            <td>{{ exercise.content }}</td>
+            <td>{{ exercise.date_created.date() }}</td>
+            <td>
+                <a href="/delete/{{ exercise.id }}">Delete</a>
+                <br>
+                <a href="/update/{{ exercise.id }}">Modify</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" value="New excercise">
+    </form>
+
+</div>
+
+{% endblock %}
